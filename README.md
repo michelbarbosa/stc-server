@@ -4,6 +4,24 @@
 
 This is a proof of concept implementation of an STC (Slice the Cake) server.
 
+## Run postgres locally
+
+Make sure you have docker and docker compose installed. Run the following:
+
+```console
+./src/main/docker$ sudo docker compose -f docker-compose.dev.yml up
+```
+
+You can omit `sudo` in the previous command in certain situations. For this, consult the Docker documentation.
+
+When the container runs, assuming you have psql installed, you can connect to the database with the following:
+
+```console
+$ psql -h 127.0.0.1 -p 5432 -U stc
+```
+
+Alternatively, use your preferred postgres client.
+
 ## Quarkus Generated Readme
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
