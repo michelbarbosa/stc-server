@@ -22,6 +22,26 @@ $ psql -h 127.0.0.1 -p 5432 -U stc
 
 Alternatively, use your preferred postgres client.
 
+## Solved problems
+
+### ./mvnw package -Dnative
+
+#### Class initialization failed, use --initialize-at-run-time
+
+[This explains how to solve it](https://stackoverflow.com/questions/65052105/quarkus-native-image-build-fails-with-unknown-arguments).
+
+The error message is helpful, the link explains how to do it with Quarkus. We basically add a property so Quarkus
+can forward the option to GraalVM.
+
+#### UnresolvedElementException: Discovered unresolved type during parsing
+
+[This explains the problem and possible solutions](https://quarkus.io/version/main/guides/native-reference#i-get-a-analysiserrorparsingerror-when-building-a-native-executable-due-to-an-unresolvedelementexception-what-can-i-do). 
+
+The current way this is being solved here is to add the optional indirect dependencies directly to the project.
+**This is not the optimal way to solve the problem**, but in some circumstances may be the only available.
+
+There's a comment in `pom.xml` to separate the dependencies only imported because of this.
+
 ## Quarkus Generated Readme
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
